@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/provider/cnn_news_provider.dart';
-import 'package:news_app/ui/home_page.dart';
+import 'package:news_app/ui/splash_scree.dart';
 import 'package:provider/provider.dart';
 import 'package:news_app/data/api/api_service.dart';
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const SplashScreen(),
     );
   }
 }
