@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "267635797965",
+    "project_id": "newsly-app-93d70",
+    "storage_bucket": "newsly-app-93d70.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267635797965:android:faee6afe2c6deb0c951e84",
+        "android_client_info": {
+          "package_name": "com.riffcorp.newsly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxES52lhnG0eiiuq4WA9QIRVG-5kG4FoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
