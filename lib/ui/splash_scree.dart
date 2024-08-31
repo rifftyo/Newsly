@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:news_app/ui/home_page.dart';
+import 'package:news_app/ui/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       Future.delayed(const Duration(milliseconds: 3500), () {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomePage()),
+          MaterialPageRoute(builder: (context) => LoginPage()),
         );
       });
     });
