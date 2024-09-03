@@ -5,6 +5,8 @@ import 'package:news_app/ui/main/home_page.dart';
 import 'package:news_app/services/auth_service.dart';
 
 class VerifyEmailPage extends StatefulWidget {
+  const VerifyEmailPage({super.key});
+
   @override
   _VerifyEmailPageState createState() => _VerifyEmailPageState();
 }
@@ -22,7 +24,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     // Mulai memeriksa status verifikasi email secara berkala
     timer = Timer.periodic(const Duration(seconds: 2), (timer) async {
       bool isVerified = await _authService.isEmailVerified(user!);
-      if (isVerified) {
+      if (isVerified && mounted) {
         timer.cancel();
         Navigator.pushReplacement(
           context,
