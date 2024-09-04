@@ -8,6 +8,7 @@ import 'package:news_app/data/api/api_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(
     ChangeNotifierProvider(
       create: (_) => CnnNewsProvider(apiService: ApiService()),
