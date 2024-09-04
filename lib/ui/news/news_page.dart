@@ -53,22 +53,32 @@ class _NewsPageState extends State<NewsPage> {
           children: [
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 15),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Selamat Pagi,',
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.w800,
-                    ),
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Selamat Pagi,',
+                        style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      Text(
+                        'Rifky Tyo',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    'Rifky Tyo',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  Image.asset(
+                    'assets/news_icon.png',
+                    width: 65,
+                    height: 65,
                   ),
                 ],
               ),
@@ -129,8 +139,8 @@ class _NewsPageState extends State<NewsPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      DetailPage(news: state.result.data.posts[index]),
+                                  builder: (context) => DetailPage(
+                                      news: state.result.data.posts[index]),
                                 ),
                               );
                             },
