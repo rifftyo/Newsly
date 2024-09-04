@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -29,6 +30,7 @@ class AuthService {
       User? user = result.user;
 
       if (user != null && user.emailVerified) {
+        saveLoginStatus();
         return user;
       } else {
         print("Email belum diverifikasi");
@@ -43,7 +45,9 @@ class AuthService {
   // Logout Pengguna
   Future signOut() async {
     try {
-      return await _auth.signOut();
+      await _auth.signOut();
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setBool('isLoggedIn', false);
     } catch (e) {
       print(e.toString());
       return null;
@@ -54,6 +58,13 @@ class AuthService {
   Future<bool> isEmailVerified(User user) async {
     await user.reload();
     User? updatedUser = _auth.currentUser;
+    
     return updatedUser != null && updatedUser.emailVerified;
+  }
+
+  // Menyimpan Status Login
+  Future<void> saveLoginStatus() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setBool('isLoggedIn', true);
   }
 }
