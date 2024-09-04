@@ -40,6 +40,7 @@ dependencies:
   webview_flutter: ^4.9.0
   firebase_core: ^2.24.2
   firebase_auth: ^4.16.0
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -65,7 +66,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/news_splash_screen.gif
+    - assets/splash_news_animation.gif
     - assets/news_icon.png
   #   - images/a_dot_ham.jpeg
 
