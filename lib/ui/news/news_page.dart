@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/provider/cnn_news_provider.dart';
+import 'package:news_app/services/auth_service.dart';
 import 'package:news_app/ui/news/detail_page.dart';
 import 'package:news_app/widgets/container_menu.dart';
 import 'package:provider/provider.dart';
@@ -13,18 +15,34 @@ class NewsPage extends StatefulWidget {
 
 class _NewsPageState extends State<NewsPage> {
   String _selectedCategory = 'Terbaru';
+  String _username = '';
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadNews();
+      _loadUsername();
     });
   }
 
   void _loadNews() {
     Provider.of<CnnNewsProvider>(context, listen: false)
         .fetchListCnn(_selectedCategory);
+  }
+
+  void _loadUsername() async {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      String? username = await AuthService().getUsername(user.uid);
+
+      if (username != null) {
+        setState(() {
+          _username = username;
+        });
+      }
+    }
   }
 
   void _onMenuTap(String category) {
@@ -56,10 +74,10 @@ class _NewsPageState extends State<NewsPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Selamat Pagi,',
                         style: TextStyle(
                           fontSize: 35,
@@ -67,8 +85,8 @@ class _NewsPageState extends State<NewsPage> {
                         ),
                       ),
                       Text(
-                        'Rifky Tyo',
-                        style: TextStyle(
+                        _username,
+                        style: const TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w500,
                         ),

@@ -15,6 +15,7 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   bool isSeen = false;
 
   void changeVisibility() {
@@ -49,6 +50,21 @@ class _SignupPageState extends State<SignupPage> {
                           child: Image.asset('assets/news_icon.png',
                               width: 100, height: 100)),
                       const SizedBox(height: 50),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 25),
+                        child: TextField(
+                          controller: _usernameController,
+                          decoration: InputDecoration(
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
+                            ),
+                            hintText: "Type your username",
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 25),
                       Container(
                         margin: const EdgeInsets.symmetric(horizontal: 25),
                         child: TextField(
@@ -95,9 +111,11 @@ class _SignupPageState extends State<SignupPage> {
                                     String email = _emailController.text.trim();
                                     String password =
                                         _passwordController.text.trim();
+                                    String username =
+                                        _usernameController.text.trim();
 
                                     User? user = await authProvider.signUp(
-                                        email, password);
+                                        email, password, username);
 
                                     if (user != null && context.mounted) {
                                       Navigator.pushReplacement(
