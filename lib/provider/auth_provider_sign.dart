@@ -8,10 +8,10 @@ class AuthProviderSign extends ChangeNotifier {
 
   bool get isLoading => _isLoading;
 
-  Future<User?> signUp(String email, String password) async {
+  Future<User?> signUp(String email, String password, String username) async {
     _setLoading(true);
     User? user =
-        await _authService.registerWithEmailAndPassword(email, password);
+        await _authService.registerWithEmailAndPassword(email, password, username);
     _setLoading(false);
     return user;
   }
