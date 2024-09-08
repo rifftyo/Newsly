@@ -5,6 +5,8 @@ import 'package:news_app/ui/sign/login_page.dart';
 class ProfilePage extends StatelessWidget {
   final _authService = AuthService();
 
+  ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
